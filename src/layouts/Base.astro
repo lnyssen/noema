@@ -12,6 +12,7 @@ const { title, description = '', dir = 'b' } = Astro.props;
   <meta name="description" content={description} />
   <meta name="robots" content="noindex" />
   <link rel="canonical" href={Astro.url.pathname} />
+  <script is:inline>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="preload" href="/fonts/Gambarino-400.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 <body>
@@ -20,6 +21,7 @@ const { title, description = '', dir = 'b' } = Astro.props;
     <a class="logo" href="/">{NOM}</a>
     <nav class="main" aria-label="Navigation principale">
       {nav.map(([l, h]) => <a href={h.startsWith('#') ? `/${h}` : `/${h}`}>{l}</a>)}
+      <button type="button" class="theme" id="theme" title="Changer de thème : automatique, clair ou sombre">Thème</button>
       <a class="btn small" href="/#pilote">Rejoindre le pilote</a>
     </nav>
   </div></header>
@@ -28,6 +30,15 @@ const { title, description = '', dir = 'b' } = Astro.props;
     <p>{NOM} est un outil de gestion administrative. Il ne remplace ni le jugement clinique ni les obligations légales du praticien. Les règles de la convention INAMI évoluent : le praticien reste responsable de leur application.</p>
     <p><span class="todo">[entité légale]</span> · <span class="todo">[adresse e-mail]</span> · <a href="/a-propos/">À propos</a> · Mentions légales · Confidentialité</p>
   </div></footer>
+  <script is:inline>
+    (function(){var b=document.getElementById('theme'),r=document.documentElement,o=['auto','light','dark'],n={auto:'Thème : auto',light:'Thème : clair',dark:'Thème : sombre'};
+    function cur(){return r.dataset.theme||'auto'}
+    function show(){b.textContent=n[cur()]}
+    show();
+    b.addEventListener('click',function(){var t=o[(o.indexOf(cur())+1)%3];
+      if(t==='auto')delete r.dataset.theme;else r.dataset.theme=t;
+      try{t==='auto'?localStorage.removeItem('theme'):localStorage.setItem('theme',t)}catch(e){}show()});})();
+  </script>
   <script is:inline define:vars={{ accents }}>
     try{var c=localStorage.getItem('accent');if(c)document.documentElement.style.setProperty('--accent',c)}catch(e){}
     document.querySelectorAll('.swatches button').forEach(function(b){

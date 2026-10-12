@@ -103,3 +103,7 @@ footer .wrap{display:grid;gap:1rem}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--link:color-mix(in srgb,var(--accent) 45%,#fff)}}
 :root[data-theme=dark]{--link:color-mix(in srgb,var(--accent) 45%,#fff)}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+[data-dir=b][data-theme=dark]{--paper:#0e1020;--tint:#161933;--line:#2a2e55}
+[data-dir=b][data-theme=light]{--paper:#fff;--tint:#f3f5fa;--line:#dfe3ee}
+.theme{font:inherit;font-weight:500;font-size:.9rem;background:transparent;color:var(--ink);border:1.5px solid var(--ink-soft);border-radius:999px;padding:.4rem .9rem;cursor:pointer}
