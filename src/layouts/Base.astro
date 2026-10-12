@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import { NOM, nav, accents } from '../data';
-const { title, description = '', dir = 'a' } = Astro.props;
+const { title, description = '', dir = 'b' } = Astro.props;
 ---
 <!doctype html>
 <html lang="fr" data-dir={dir}>
@@ -11,21 +11,22 @@ const { title, description = '', dir = 'a' } = Astro.props;
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="robots" content="noindex" />
+  <link rel="canonical" href={Astro.url.pathname} />
   <link rel="preload" href="/fonts/Gambarino-400.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
   <header class="top"><div class="wrap">
-    <a class="logo" href={`/${dir}/`}>{NOM}</a>
+    <a class="logo" href="/">{NOM}</a>
     <nav class="main" aria-label="Navigation principale">
-      {nav.map(([l, h]) => <a href={`/${dir}/${h}`}>{l}</a>)}
-      <a class="btn small" href={`/${dir}/#pilote`}>Rejoindre le pilote</a>
+      {nav.map(([l, h]) => <a href={h.startsWith('#') ? `/${h}` : `/${h}`}>{l}</a>)}
+      <a class="btn small" href="/#pilote">Rejoindre le pilote</a>
     </nav>
   </div></header>
   <main id="contenu"><slot /></main>
   <footer><div class="wrap">
     <p>{NOM} est un outil de gestion administrative. Il ne remplace ni le jugement clinique ni les obligations légales du praticien. Les règles de la convention INAMI évoluent : le praticien reste responsable de leur application.</p>
-    <p><span class="todo">[entité légale]</span> · <span class="todo">[adresse e-mail]</span> · Mentions légales · Confidentialité</p>
+    <p><span class="todo">[entité légale]</span> · <span class="todo">[adresse e-mail]</span> · <a href="/a-propos/">À propos</a> · Mentions légales · Confidentialité</p>
   </div></footer>
   <script is:inline define:vars={{ accents }}>
     try{var c=localStorage.getItem('accent');if(c)document.documentElement.style.setProperty('--accent',c)}catch(e){}

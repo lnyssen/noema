@@ -1,24 +1,22 @@
 ---
-import Base from '../../layouts/Base.astro';
-import { NOM } from '../../data';
-export function getStaticPaths() { return [{ params: { dir: 'b' } }]; }
-const { dir } = Astro.params;
+import Base from '../layouts/Base.astro';
+import { NOM } from '../data';
 ---
-<Base dir={dir} title={`Sécurité et vie privée · ${NOM}`} description="Ce qui est chiffré, ce qui ne l’est pas, les accès, les sauvegardes, les droits des patients.">
+<Base title={`Sécurité et vie privée · ${NOM}`} description="Ce qui est chiffré, ce qui ne l’est pas, les accès, les sauvegardes, les droits des patients.">
   <section><div class="wrap">
     <p class="eyebrow">Sécurité et vie privée</p>
     <h1>Ce que nous faisons, et ce que nous ne faisons pas</h1>
     <p>Vous confiez à cet outil des données de santé. Cette page dit ce qui existe aujourd’hui, sans superlatif.</p>
   </div></section>
 
-  <section class="tinted"><div class="wrap grid3">
+  <section class="tinted"><div class="wrap"><h2 class="sr-only">Les points essentiels</h2><div class="grid3">
     <div class="card"><h3>Ce qui est chiffré</h3><p>Les notes de séance et les documents, avant d’être enregistrés. Ne le sont pas : l’identité, les coordonnées et les rendez-vous.</p></div>
     <div class="card"><h3>Accès</h3><p>Mot de passe ou Face ID / empreinte, verrouillage automatique après 30 minutes d’inactivité, essais de connexion limités.</p></div>
     <div class="card"><h3>Sauvegardes</h3><p>Chaque nuit, chiffrées, avec alerte si elles ne tournent plus. Conservation : trente jours. Restauration : <span class="todo">[à tester et documenter avant publication]</span>.</p></div>
     <div class="card"><h3>Droits des patients</h3><p>Export du dossier, anonymisation, suppression.</p></div>
     <div class="card"><h3>Qui voit quoi</h3><p>Sous-traitants : <span class="todo">[hébergeur, e-mail, Google Agenda à compléter]</span>. La synchronisation Google envoie le nom des patients à Google.</p></div>
     <div class="card"><h3>Ce que nous ne faisons pas</h3><p>Pas de revente, pas de publicité, pas d’IA sur vos notes.</p></div>
-  </div></section>
+  </div></div></section>
 
   <section><div class="wrap">
     <h2>Les réglages d’accès</h2>

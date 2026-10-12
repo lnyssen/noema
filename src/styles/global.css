@@ -8,7 +8,7 @@
   --ink:#1b1464; --ink-soft:#4a4673;
   --paper:#f9f7f2; --card:#fff; --line:#e3ded2; --tint:#efeaff;
   --serif:Gambarino,Georgia,serif; --sans:Satoshi,system-ui,sans-serif;
-  --w:72rem;
+  --w:72rem;--link:var(--accent);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme=light]){--ink:#ece9ff;--ink-soft:#b9b4dc;--paper:#12102b;--card:#1b1840;--line:#332e66;--tint:#262150}
@@ -20,7 +20,7 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--sans)}
 img{max-width:100%;height:auto;display:block}
-a{color:var(--accent);text-underline-offset:.2em}
+a{color:var(--link,var(--accent));text-underline-offset:.2em}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
 .skip{position:absolute;left:1rem;top:-4rem;background:var(--ink);color:var(--paper);padding:.6rem 1rem;border-radius:999px;z-index:10}
 .skip:focus{top:1rem}
@@ -99,3 +99,7 @@ footer .wrap{display:grid;gap:1rem}
 [data-dir=b] .frame{transform:perspective(1600px) rotateY(-6deg) rotateX(2deg);box-shadow:0 30px 50px -30px rgba(10,20,80,.5)}
 [data-dir=b] section.tinted{background:var(--tint)}
 @media(max-width:56rem){[data-dir=b] .frame{transform:none}}
+
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--link:color-mix(in srgb,var(--accent) 45%,#fff)}}
+:root[data-theme=dark]{--link:color-mix(in srgb,var(--accent) 45%,#fff)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

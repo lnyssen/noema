@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+const faq = [
+  ['Où sont mes données ?', '[à confirmer : pays et fournisseur d’hébergement]'],
+  ['Qui peut les lire ?', 'Les notes de séance et les documents sont chiffrés avant enregistrement. L’identité, les coordonnées et les rendez-vous ne le sont pas. [liste des sous-traitants à compléter]'],
+  ['Est-ce conforme au RGPD ?', 'Nous n’affirmons pas une conformité que nous ne pouvons pas encore prouver. Nous décrivons ce qui existe : chiffrement, droit d’accès, export, anonymisation et suppression d’un dossier.'],
+  ['Puis-je exporter mes dossiers ?', 'Oui : export du dossier d’un patient, anonymisation et suppression.'],
+  ['Que se passe-t-il si je pars ?', '[à définir avec la politique de conservation et d’export]'],
+  ['Faut-il installer quelque chose ?', 'Non. L’outil s’ouvre dans le navigateur, et peut s’installer sur le téléphone comme une application.'],
+  ['Mes patients doivent-ils créer un compte ?', 'Non. Ils prennent rendez-vous par un lien, sans compte.'],
+  ['Puis-je l’utiliser sur téléphone ?', 'Oui, avec Face ID ou empreinte pour l’ouvrir.'],
+  ['Que se passe-t-il en cas de panne ?', '[à définir]'],
+  ['Combien de temps pour démarrer ?', '[à mesurer pendant le pilote]'],
+  ['Puis-je importer mes patients ?', 'Oui, depuis un fichier Excel, avec détection de doublons et fusion.'],
+  ['Supporte-t-il plusieurs lieux ?', 'Oui : agenda multi-lieux et alerte de trajet.'],
+  ['Et si la convention INAMI change ?', 'Les plafonds sont des paramètres. Vous restez responsable de leur application.'],
+  ['Y a-t-il du néerlandais ?', 'Pas encore.'],
+  ['Et si j’ai une secrétaire ?', '[à définir : l’outil est pensé pour un praticien seul]'],
+  ['Quel est le prix ?', 'Pilote en cours. Tarifs annoncés avant sa fin.'],
+];
+const parts = (t) => t.split(/(\[[^\]]+\])/).filter(Boolean);
+---
+<Base title="Questions fréquentes · Noema" description="Réponses honnêtes aux questions des psychologues.">
+  <section><div class="wrap"><p class="eyebrow">Questions</p><h1>Questions fréquentes</h1>
+    <dl class="faq">{faq.map(([q, r]) => <><dt>{q}</dt><dd>{parts(r).map(x => x.startsWith('[') ? <span class="todo">{x}</span> : x)}</dd></>)}</dl></div></section>
+</Base>

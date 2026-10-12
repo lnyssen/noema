@@ -1,4 +1,4 @@
-export const NOM = '[NOM]';
+export const NOM = 'Noema';
 export const accents = [
   ['Violet', '#7f00ff'], ['Indigo', '#585de4'], ['Bleu', '#0a70e6'], ['Turquoise', '#03817d'],
   ['Vert', '#1f8449'], ['Rose', '#db1f70'], ['Corail', '#cf4217'], ['Ardoise', '#5b75a2'],
@@ -20,8 +20,8 @@ export const journee = [
 ];
 
 export const nav = [
-  ['Fonctionnalités', '#benefices'], ['Belgique et INAMI', '#belgique'], ['Sécurité', 'securite/'],
-  ['Démonstration', '#journee'], ['Tarifs', '#pilote'], ['Questions', '#questions'],
+  ['Fonctionnalités', 'fonctionnalites/'], ['Belgique et INAMI', 'belgique-inami/'], ['Sécurité', 'securite/'],
+  ['Démonstration', 'demonstration/'], ['Tarifs', 'tarifs/'], ['Questions', 'questions/'],
 ];
 
 export const faq = [

@@ -1,3 +1,88 @@
 ---
-return Astro.redirect('/b/');
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+import { NOM, benefices, journee, faq, accents } from '../data';
+const promesse = 'Votre cabinet, sans la paperasse.';
 ---
+<Base title={`${NOM}, gestion de cabinet pour psychologues en Belgique`} description="Agenda, dossiers, facturation et suivi INAMI pour psychologues indépendants en Belgique. Pilote en cours.">
+  <section><div class="wrap split rev">
+    <div>
+      <p class="eyebrow">Pour psychologues indépendants en Belgique</p>
+      <h1>{promesse}</h1>
+      <p>Agenda, dossiers, facturation et conformité INAMI pour psychologues indépendants en Belgique.</p>
+      <div class="cta"><a class="btn" href="#pilote">Rejoindre le pilote</a><a class="btn ghost" href="#journee">Voir la démonstration</a></div>
+      <p style="margin-top:1.5rem;font-size:.95rem;color:var(--ink-soft)">Utilisé au quotidien dans un cabinet de psychologue clinicienne à Bruxelles.</p>
+    </div>
+    <Frame src="/captures/agenda.webp" alt="Agenda de la semaine : séances réparties sur trois lieux, chacun dans sa couleur." phone="/captures/mobile-agenda.webp" phoneAlt="Agenda sur téléphone : séances de la semaine et heures comptées." />
+  </div></section>
+
+  <section id="journee" class="tinted"><div class="wrap">
+    <p class="eyebrow">Une journée dans le cabinet</p>
+    <h2>Trois moments, trois gestes</h2>
+    <div class="grid3">{journee.map(([t, d]) => <div class="card"><h3>{t}</h3><p>{d}</p></div>)}</div>
+  </div></section>
+
+  <section id="benefices"><div class="wrap">
+    <p class="eyebrow">Ce que fait l’outil</p>
+    <h2>Six choses, concrètement</h2>
+    <div class="grid3">{benefices.map(([t, d]) => <div class="card"><h3>{t}</h3><p>{d}</p></div>)}</div>
+  </div></section>
+
+  <section id="belgique" class="tinted"><div class="wrap split">
+    <div>
+      <p class="eyebrow">Belgique et INAMI</p>
+      <h2>Pensé pour la pratique belge</h2>
+      <p>Suivi de la convention de première ligne : plafonds de séances sur douze mois, suivi trimestriel exportable. Reçus d’honoraires, attestations de présence, TVA exonérée, code QR de virement.</p>
+      <p class="notice">Les règles de la convention changent. Les plafonds sont des paramètres, vous restez responsable de leur application.</p>
+    </div>
+    <Frame src="/captures/ppl.webp" alt="Suivi trimestriel de la convention de première ligne : séances, plafonds sur douze mois, montants à verser, reçus et à recevoir." width="1300" height="720" />
+  </div></section>
+
+  <section id="confiance"><div class="wrap">
+    <p class="eyebrow">Confiance</p>
+    <h2>Vos données restent les vôtres</h2>
+    <div class="grid3">
+      <div class="card"><h3>Chiffrées</h3><p>Notes de séance et documents chiffrés avant enregistrement.</p></div>
+      <div class="card"><h3>Sauvegardées</h3><p>Sauvegarde chiffrée chaque nuit, avec alerte en cas d’oubli.</p></div>
+      <div class="card"><h3>Exportables</h3><p>Export, anonymisation et suppression d’un dossier en quelques clics.</p></div>
+    </div>
+    <p style="margin-top:1.5rem"><a href={'/securite/'}>Lire la page Sécurité et vie privée</a></p>
+  </div></section>
+
+  <section class="tinted"><div class="wrap">
+    <p class="eyebrow">Personnalisation</p>
+    <h2>Huit teintes, au choix</h2>
+    <p>Essayez : la couleur de cette page change tout de suite.</p>
+    <div class="swatches" role="group" aria-label="Couleur d’accent">
+      {accents.map(([n, c], i) => <button type="button" data-c={c} style={`--c:${c}`} aria-label={n} aria-pressed={i === 0}></button>)}
+    </div>
+  </div></section>
+
+  <section id="pilote"><div class="wrap split">
+    <div>
+      <p class="eyebrow">Pilote</p>
+      <h2>Nous cherchons cinq psychologues pour essayer l’outil dans leur cabinet</h2>
+      <p>L’outil n’est pas encore en vente. Durée : <span class="todo">[x mois]</span>. Tarifs annoncés avant la fin du pilote : <span class="todo">[prix à fixer]</span>. En retour, nous vous demandons vos remarques.</p>
+      <p>Il ne propose ni vidéoconsultation, ni IA sur vos notes, ni dossier partagé entre praticiens, ni rappels par SMS, ni télétransmission automatique à l’INAMI ou à la mutuelle, ni néerlandais pour l’instant.</p>
+    </div>
+    <form class="pilot" action="#" method="post" onsubmit="return false">
+      <label>Prénom<input name="prenom" autocomplete="given-name" required></label>
+      <label>Nom<input name="nom" autocomplete="family-name" required></label>
+      <label>E-mail<input type="email" name="email" autocomplete="email" required></label>
+      <label>Type de pratique<select name="pratique"><option>Cabinet indépendant</option><option>Activité mixte (cabinet, école, institution)</option><option>Petit cabinet à plusieurs</option></select></label>
+      <label>Nombre de lieux<input type="number" min="1" name="lieux" value="1"></label>
+      <label>Outil actuel (facultatif)<input name="outil"></label>
+      <label style="display:flex;gap:.6rem;align-items:flex-start;font-weight:400"><input type="checkbox" required style="margin-top:.35rem"> J’accepte d’être recontacté·e au sujet du pilote. Aucune donnée de patient dans ce formulaire.</label>
+      <button class="btn" type="submit" style="font:inherit;font-weight:700;cursor:pointer">Rejoindre le pilote</button>
+      <p style="font-size:.9rem;color:var(--ink-soft)">Maquette : le formulaire n’envoie rien pour l’instant. À venir : double confirmation par e-mail, durée de conservation, désinscription.</p>
+    </form>
+  </div></section>
+
+  <section id="questions" class="tinted"><div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2>Questions fréquentes</h2>
+    <dl class="faq">
+      {faq.map(([q, r]) => <><dt>{q}</dt><dd>{r ?? <span class="todo">[à confirmer : pays et fournisseur d’hébergement]</span>}</dd></>)}
+    </dl>
+  </div></section>
+</Base>

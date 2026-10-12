@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
+const etapes = [
+  ['Agenda', 'La semaine, les lieux, les trajets.', '/captures/agenda.webp', 'Agenda de la semaine.', 1300, 1000],
+  ['Fiche patient', 'Coordonnées, notes, documents.', null],
+  ['Séance honorée', 'Un geste, la séance est comptée.', null],
+  ['Encaissement', 'Marquer le paiement reçu.', null],
+  ['Relance avec QR', 'Le rappel, avec le code de virement.', null],
+  ['Attestation', 'Le PDF pour la mutuelle ou l’école.', null],
+  ['Suivi INAMI', 'Plafonds et suivi trimestriel.', '/captures/ppl.webp', 'Suivi trimestriel INAMI.', 1300, 720],
+];
+---
+<Base title="Démonstration · Noema" description="Visite guidée en sept étapes, avec des données fictives.">
+  <section><div class="wrap"><p class="eyebrow">Démonstration</p><h1>Une visite en sept étapes</h1>
+    <p>Toutes les données sont fictives. <span class="todo">[à décider : instance de démonstration ouverte, ou parcours de captures cliquables]</span></p></div></section>
+  <section class="tinted"><div class="wrap">
+    <ol style="list-style:none;padding:0;display:grid;gap:3rem">
+      {etapes.map(([t, d, img, alt, w, h], i) => (
+        <li class="split"><div><p class="eyebrow">Étape {i + 1}</p><h2>{t}</h2><p>{d}</p></div>
+        {img ? <Frame src={img} alt={alt} width={w} height={h} /> : <p class="card"><span class="todo">[capture à régénérer avec des données fictives]</span></p>}</li>
+      ))}
+    </ol>
+  </div></section>
+</Base>
