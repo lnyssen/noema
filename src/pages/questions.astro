@@ -20,7 +20,7 @@ const faq = [
 ];
 const parts = (t) => t.split(/(\[[^\]]+\])/).filter(Boolean);
 ---
-<Base title="Questions fréquentes · Noema" description="Réponses honnêtes aux questions des psychologues.">
+<Base title="Questions fréquentes · noēma" description="Réponses honnêtes aux questions des psychologues.">
   <section><div class="wrap"><p class="eyebrow">Questions</p><h1>Questions fréquentes</h1>
     <dl class="faq">{faq.map(([q, r]) => <><dt>{q}</dt><dd>{parts(r).map(x => x.startsWith('[') ? <span class="todo">{x}</span> : x)}</dd></>)}</dl></div></section>
 </Base>

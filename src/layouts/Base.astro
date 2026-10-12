@@ -20,7 +20,7 @@ const { title, description = '', dir = 'b' } = Astro.props;
 <body>
   <a class="skip" href="#contenu">Aller au contenu</a>
   <header class="top"><div class="wrap">
-    <a class="logo" href="/" aria-label="Noema, accueil"><Logo /></a>
+    <a class="logo" href="/" aria-label="noēma, accueil"><Logo /></a>
     <nav class="main" aria-label="Navigation principale">
       {nav.map(([l, h]) => <a href={h.startsWith('#') ? `/${h}` : `/${h}`}>{l}</a>)}
       <button type="button" class="switch" id="theme" role="switch" aria-checked="false" aria-label="Mode sombre">

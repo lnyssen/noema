@@ -1,4 +1,4 @@
-export const NOM = 'Noema';
+export const NOM = 'noēma';
 export const accents = [
   ['Violet', '#7f00ff'], ['Indigo', '#585de4'], ['Bleu', '#0a70e6'], ['Turquoise', '#03817d'],
   ['Vert', '#1f8449'], ['Rose', '#db1f70'], ['Corail', '#cf4217'], ['Ardoise', '#5b75a2'],

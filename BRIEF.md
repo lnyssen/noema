@@ -1,8 +1,8 @@
-# Brief de direction créative : Noema
+# Brief de direction créative : noēma
 
 ## Projet
 
-**Noema** est un logiciel de gestion de cabinet pour psychologues indépendants en Belgique (agenda, dossiers, facturation, suivi INAMI). Il est utilisé au quotidien dans un cabinet à Bruxelles et n’est pas encore vendu. Ce site le présente et recrute des praticiens pilotes.
+**noēma** est un logiciel de gestion de cabinet pour psychologues indépendants en Belgique (agenda, dossiers, facturation, suivi INAMI). Il est utilisé au quotidien dans un cabinet à Bruxelles et n’est pas encore vendu. Ce site le présente et recrute des praticiens pilotes.
 
 - **Public** : psychologues cliniciens indépendants, Belgique francophone, souvent sur plusieurs lieux.
 - **Objectif** : faire comprendre le produit en dix secondes, donner confiance (données de santé), recruter cinq praticiens pilotes.
