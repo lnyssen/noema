@@ -2,9 +2,9 @@
 import Base from '../../layouts/Base.astro';
 import Frame from '../../components/Frame.astro';
 import { NOM, benefices, journee, faq, accents } from '../../data';
-export function getStaticPaths() { return [{ params: { dir: 'a' } }, { params: { dir: 'b' } }]; }
+export function getStaticPaths() { return [{ params: { dir: 'b' } }]; }
 const { dir } = Astro.params;
-const promesse = dir === 'a' ? 'Votre cabinet, sans la paperasse.' : 'Moins d’administratif, plus de présence.';
+const promesse = 'Votre cabinet, sans la paperasse.';
 ---
 <Base dir={dir} title={`${NOM}, gestion de cabinet pour psychologues en Belgique`} description="Agenda, dossiers, facturation et suivi INAMI pour psychologues indépendants en Belgique. Pilote en cours.">
   <section><div class="wrap split rev">

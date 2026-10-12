@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { NOM } from '../../data';
-export function getStaticPaths() { return [{ params: { dir: 'a' } }, { params: { dir: 'b' } }]; }
+export function getStaticPaths() { return [{ params: { dir: 'b' } }]; }
 const { dir } = Astro.params;
 ---
 <Base dir={dir} title={`Sécurité et vie privée · ${NOM}`} description="Ce qui est chiffré, ce qui ne l’est pas, les accès, les sauvegardes, les droits des patients.">
