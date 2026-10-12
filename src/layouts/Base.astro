@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+import { NOM, nav, accents } from '../data';
+const { title, description = '', dir = 'a' } = Astro.props;
+---
+<!doctype html>
+<html lang="fr" data-dir={dir}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="noindex" />
+  <link rel="preload" href="/fonts/Gambarino-400.woff2" as="font" type="font/woff2" crossorigin />
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="top"><div class="wrap">
+    <a class="logo" href={`/${dir}/`}>{NOM}</a>
+    <nav class="main" aria-label="Navigation principale">
+      {nav.map(([l, h]) => <a href={`/${dir}/${h}`}>{l}</a>)}
+      <a class="btn small" href={`/${dir}/#pilote`}>Rejoindre le pilote</a>
+    </nav>
+  </div></header>
+  <main id="contenu"><slot /></main>
+  <footer><div class="wrap">
+    <p>{NOM} est un outil de gestion administrative. Il ne remplace ni le jugement clinique ni les obligations légales du praticien. Les règles de la convention INAMI évoluent : le praticien reste responsable de leur application.</p>
+    <p><span class="todo">[entité légale]</span> · <span class="todo">[adresse e-mail]</span> · Mentions légales · Confidentialité</p>
+  </div></footer>
+  <script is:inline define:vars={{ accents }}>
+    try{var c=localStorage.getItem('accent');if(c)document.documentElement.style.setProperty('--accent',c)}catch(e){}
+    document.querySelectorAll('.swatches button').forEach(function(b){
+      b.addEventListener('click',function(){
+        var v=b.dataset.c;document.documentElement.style.setProperty('--accent',v);
+        document.querySelectorAll('.swatches button').forEach(function(o){o.setAttribute('aria-pressed',o===b)});
+        try{localStorage.setItem('accent',v)}catch(e){}
+      });
+    });
+  </script>
+</body>
+</html>

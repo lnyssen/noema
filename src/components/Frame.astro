@@ -1,0 +1,9 @@
+---
+const { src, alt, phone, phoneAlt = '', width = 1300, height = 1000 } = Astro.props;
+---
+<div class="shot">
+  <div class="frame"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+    <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+  </div>
+  {phone && <div class="phone"><img src={phone} alt={phoneAlt} width="780" height="1553" loading="lazy" decoding="async" /></div>}
+</div>
