@@ -107,3 +107,13 @@ footer .wrap{display:grid;gap:1rem}
 [data-dir=b][data-theme=dark]{--paper:#0e1020;--tint:#161933;--line:#2a2e55}
 [data-dir=b][data-theme=light]{--paper:#fff;--tint:#f3f5fa;--line:#dfe3ee}
 .theme{font:inherit;font-weight:500;font-size:.9rem;background:transparent;color:var(--ink);border:1.5px solid var(--ink-soft);border-radius:999px;padding:.4rem .9rem;cursor:pointer}
+
+.brand{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink)}
+.brand .word{font:700 1.45rem/1 var(--sans);letter-spacing:-.04em}
+.logo{text-decoration:none}
+.switch{position:relative;display:inline-flex;align-items:center;justify-content:space-between;width:3.6rem;height:2rem;padding:0 .55rem;border-radius:999px;border:1.5px solid var(--ink-soft);background:var(--card);color:var(--ink);cursor:pointer}
+.switch .knob{position:absolute;top:2px;left:2px;width:calc(2rem - 7px);height:calc(2rem - 7px);border-radius:50%;background:var(--ink);transition:transform .2s}
+.switch[aria-checked=true] .knob{transform:translateX(1.6rem)}
+.switch svg{position:relative;z-index:1;color:var(--ink)}
+.switch[aria-checked=false] .sun{color:var(--paper)}
+.switch[aria-checked=true] .moon{color:var(--paper)}
